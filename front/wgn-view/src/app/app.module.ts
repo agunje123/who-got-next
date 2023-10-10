@@ -5,13 +5,15 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapComponent } from './components/map/map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
