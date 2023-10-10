@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
@@ -6,10 +6,14 @@ import { SettingsService } from 'src/app/services/settings.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   isDarkMode = false;
 
   constructor(private settingsService: SettingsService) {}
+
+  ngOnInit() {
+    this.isDarkMode = this.settingsService.getDarkMode();
+  }
 
   toggleDarkMode() {
     if (this.isDarkMode == true) {
