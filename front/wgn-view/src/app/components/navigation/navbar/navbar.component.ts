@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,13 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  darkModeOn: boolean = true;
+  isDarkMode = false;
+
+  constructor(private settingsService: SettingsService) {}
 
   toggleDarkMode() {
-    if (this.darkModeOn === true) {
-      this.darkModeOn = false;
+    if (this.isDarkMode == true) {
+      this.settingsService.setDarkMode(false);
+      this.isDarkMode = false;
     } else {
-      this.darkModeOn = true;
+      this.settingsService.setDarkMode(true);
+      this.isDarkMode = true;
     }
   }
 }
