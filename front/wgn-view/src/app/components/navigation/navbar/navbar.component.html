@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
   <span>Who Got Next?</span>
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/about">About</button>
+  <mat-icon *ngIf="!darkModeOn" (click)="toggleDarkMode()">dark_mode</mat-icon>
+  <mat-icon *ngIf="darkModeOn" (click)="toggleDarkMode()">light_mode</mat-icon>
 </mat-toolbar>
