@@ -20,7 +20,13 @@ export class MapComponent implements OnInit {
     }),
   };
 
-  private initMap(): void {
+  constructor() {}
+
+  ngOnInit() {
+    this.initMap();
+  }
+
+  initMap() {
     this.map = L.map('map', {
       center: this.centroid,
       zoom: 14,
@@ -39,14 +45,22 @@ export class MapComponent implements OnInit {
     tiles.addTo(this.map);
 
     this.map.on('click', (e) => {
-      console.log(e.latlng);
-      L.marker([e.latlng.lat, e.latlng.lng], this.markerIcon).addTo(this.map);
+      this.createMarkerWithPopup(e.latlng.lat, e.latlng.lng);
     });
   }
 
-  constructor() {}
+  createMarkerWithPopup(latitude: number, longitude: number) {
+    let marker = L.marker([latitude, longitude], this.markerIcon);
+    let popup = this.createPopup(latitude, longitude);
+    marker.addTo(this.map);
+    marker.bindPopup(popup);
+  }
 
-  ngOnInit() {
-    this.initMap();
+  createPopup(latitude: number, longitude: number) {
+    return (
+      `Chosen location: ` +
+      `<div>Latitude: ${latitude}</div>` +
+      `<div>Longitude: ${longitude}</div>`
+    );
   }
 }

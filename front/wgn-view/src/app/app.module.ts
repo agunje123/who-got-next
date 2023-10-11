@@ -11,7 +11,6 @@ import { MapComponent } from './components/map/map/map.component';
 
 //SERVICES
 import { SettingsService } from './services/settings.service';
-import { MapService } from './services/map.service';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, MapComponent],
@@ -21,7 +20,7 @@ import { MapService } from './services/map.service';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [SettingsService, MapService],
+  providers: [SettingsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
