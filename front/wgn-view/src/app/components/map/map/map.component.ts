@@ -9,6 +9,16 @@ import * as L from 'leaflet';
 export class MapComponent implements OnInit {
   private map: L.Map;
   private centroid: L.LatLngExpression = [45.81, 15.98];
+  private markerIcon = {
+    icon: L.icon({
+      iconSize: [25, 41],
+      iconAnchor: [10, 41],
+      popupAnchor: [2, -40],
+      iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
+      shadowUrl:
+        'https://unpkg.com/leaflet@1.5.1/dist/images/marker-shadow.png',
+    }),
+  };
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -30,6 +40,7 @@ export class MapComponent implements OnInit {
 
     this.map.on('click', (e) => {
       console.log(e.latlng);
+      L.marker([e.latlng.lat, e.latlng.lng], this.markerIcon).addTo(this.map);
     });
   }
 
