@@ -57,10 +57,12 @@ export class MapComponent implements OnInit {
   }
 
   createPopup(latitude: number, longitude: number) {
+    let latitudeShort = latitude.toFixed(4);
+    let longitudeShort = longitude.toFixed(4);
     return (
       `Chosen location: ` +
-      `<div>Latitude: ${latitude}</div>` +
-      `<div>Longitude: ${longitude}</div>`
+      `<div>Latitude: ${latitudeShort}</div>` +
+      `<div>Longitude: ${longitudeShort}</div>`
     );
   }
 }
