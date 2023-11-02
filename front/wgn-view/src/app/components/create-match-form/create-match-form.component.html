@@ -22,27 +22,3 @@
     Choose Location
   </button>
 </form>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field class="full-width">
-    <mat-label>Activity Type</mat-label>
-    <mat-select formControlName="activityType">
-      <mat-option value="football">Football</mat-option>
-      <mat-option value="basketball">Basketball</mat-option>
-      <mat-option value="volleyball">Volleyball</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="half-width">
-    <mat-label>Current Players</mat-label>
-    <input matInput type="number" formControlName="currentPlayers" />
-  </mat-form-field>
-
-  <mat-form-field class="half-width">
-    <mat-label>Players Needed</mat-label>
-    <input matInput type="number" formControlName="playersNeeded" />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit">
-    Choose Location
-  </button>
-</form>
