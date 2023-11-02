@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
     private breakpointService: BreakpointObserver
   ) {}
 
-  isMobile: boolean = false;
   isDarkMode: boolean = true;
 
   @HostBinding('class')
@@ -22,13 +21,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.checkForDarkmode();
-    this.breakpointService.observe(Breakpoints.Small).subscribe((result) => {
-      this.isMobile = false;
-      if (result.matches) {
-        this.isMobile = true;
-        console.log('Subscription works!');
-      }
-    });
+    this.checkForMobileView();
+  }
+
+  checkForMobileView() {
+    this.breakpointService
+      .observe([Breakpoints.Small, Breakpoints.XSmall])
+      .subscribe((result) => {
+        this.settingsService.mobileViewSubject.next(false);
+        if (result.matches) {
+          this.settingsService.mobileViewSubject.next(true);
+        }
+      });
   }
 
   checkForDarkmode() {
