@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-create-match-form',
@@ -8,14 +9,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateMatchFormComponent implements OnInit {
   form: FormGroup;
+  isMobile: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private settingsService: SettingsService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       activityType: ['', Validators.required],
       currentPlayers: [null, [Validators.required, Validators.min(0)]],
       playersNeeded: [null, [Validators.required, Validators.min(0)]],
+    });
+
+    this.settingsService.mobileViewSubject.subscribe((result) => {
+      this.isMobile = result;
     });
   }
 
