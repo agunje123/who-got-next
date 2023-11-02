@@ -19,6 +19,7 @@ export class MapComponent implements OnInit {
         'https://unpkg.com/leaflet@1.5.1/dist/images/marker-shadow.png',
     }),
   };
+  private chosenLocation: any = [];
 
   constructor() {}
 
@@ -45,6 +46,7 @@ export class MapComponent implements OnInit {
     tiles.addTo(this.map);
 
     this.map.on('click', (e) => {
+      this.removePreviousMarkers();
       this.createMarkerWithPopup(e.latlng.lat, e.latlng.lng);
     });
   }
@@ -54,6 +56,7 @@ export class MapComponent implements OnInit {
     let popup = this.createPopup(latitude, longitude);
     marker.addTo(this.map);
     marker.bindPopup(popup);
+    this.chosenLocation.push(marker);
   }
 
   createPopup(latitude: number, longitude: number) {
@@ -64,5 +67,12 @@ export class MapComponent implements OnInit {
       `<div>Latitude: ${latitudeShort}</div>` +
       `<div>Longitude: ${longitudeShort}</div>`
     );
+  }
+
+  removePreviousMarkers() {
+    for (let marker of this.chosenLocation) {
+      this.map.removeLayer(marker);
+    }
+    this.chosenLocation = [];
   }
 }
