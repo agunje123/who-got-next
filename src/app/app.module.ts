@@ -13,6 +13,7 @@ import { CreateMatchFormComponent } from './components/create-match-form/create-
 
 //SERVICES
 import { SettingsService } from './services/settings.service';
+import { MatchesTableComponent } from './components/matches-table/matches-table.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SettingsService } from './services/settings.service';
     NavbarComponent,
     MapComponent,
     CreateMatchFormComponent,
+    MatchesTableComponent,
   ],
   imports: [
     BrowserModule,

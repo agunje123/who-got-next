@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
   ],
   exports: [
     MatToolbarModule,
@@ -22,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [],
