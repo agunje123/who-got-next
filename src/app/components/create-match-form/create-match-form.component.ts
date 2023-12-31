@@ -60,8 +60,9 @@ export class CreateMatchFormComponent implements OnInit {
         formData.latitude
       );
       this.supabaseService.createMatch(newMatch);
+      this.form.reset();
     } else {
-      console.log('Please enter the correct values.');
+      console.log('Please fill in the correct values.');
     }
   }
 }
