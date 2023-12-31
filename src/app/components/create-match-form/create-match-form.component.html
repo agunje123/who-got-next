@@ -1,17 +1,25 @@
 <div class="formDiv">
-  <form [formGroup]="form" [ngClass]="{'mobile': isMobile}" (ngSubmit)="onSubmit()">
-
-    <mat-form-field>
+  <form
+    [formGroup]="form"
+    [ngClass]="{ mobile: isMobile }"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field *ngIf="!isMapOpen">
       <mat-label>Current Players</mat-label>
       <input matInput type="number" formControlName="currentPlayers" />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="!isMapOpen">
       <mat-label>Players Needed</mat-label>
       <input matInput type="number" formControlName="playersNeeded" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="onOpenMap()">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onOpenMap()"
+      *ngIf="!isMapOpen"
+    >
       Choose Location
     </button>
 

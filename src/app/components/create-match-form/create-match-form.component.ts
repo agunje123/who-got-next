@@ -30,6 +30,10 @@ export class CreateMatchFormComponent implements OnInit {
       latitude: [null, [Validators.required]],
     });
 
+    this.mapService.isMapOpenSub.subscribe((res) => {
+      this.isMapOpen = res;
+    });
+
     this.mapService.coordinatesSub.subscribe((coordinates) => {
       this.form.value.latitude = coordinates[0];
       this.form.value.longitude = coordinates[1];
