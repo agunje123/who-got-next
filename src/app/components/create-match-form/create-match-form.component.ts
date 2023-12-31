@@ -20,9 +20,11 @@ export class CreateMatchFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      activityType: ['', Validators.required],
       currentPlayers: [null, [Validators.required, Validators.min(0)]],
       playersNeeded: [null, [Validators.required, Validators.min(0)]],
+      courtName: [null, [Validators.required]],
+      longitude: [null, [Validators.required]],
+      latitude: [null, [Validators.required]]
     });
 
     this.settingsService.mobileViewSubject.subscribe((result) => {
@@ -33,10 +35,9 @@ export class CreateMatchFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const formData = this.form.value;
-      // You can access the form values here and perform any actions, such as navigating to a location page.
       console.log(formData);
     } else {
-      // Handle form validation errors, if any.
+      console.log("Please enter the correct values.")
     }
   }
 }
