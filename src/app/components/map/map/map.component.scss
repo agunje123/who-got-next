@@ -19,3 +19,19 @@
 #map {
   height: 100%;
 }
+
+.btn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.btn button {
+  width: 20%; 
+  height: 56px;
+}
+
+.btn mat-form-field {
+  width: 20%;
+}

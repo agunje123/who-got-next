@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-map',
@@ -20,8 +21,10 @@ export class MapComponent implements OnInit {
     }),
   };
   private chosenLocation: any = [];
+  latitude: number = 0;
+  longitude: number = 0;
 
-  constructor() {}
+  constructor(private mapService: MapService) {}
 
   ngOnInit() {
     this.initMap();
@@ -48,6 +51,8 @@ export class MapComponent implements OnInit {
     this.map.on('click', (e) => {
       this.removePreviousMarkers();
       this.createMarkerWithPopup(e.latlng.lat, e.latlng.lng);
+      this.latitude = e.latlng.lat;
+      this.longitude = e.latlng.lng;
     });
   }
 
@@ -74,5 +79,14 @@ export class MapComponent implements OnInit {
       this.map.removeLayer(marker);
     }
     this.chosenLocation = [];
+  }
+
+  setCoordinates() {
+    if (this.latitude != 0 && this.longitude != 0) {
+      this.mapService.isMapOpenSub.next(false);
+      this.mapService.setCoordinates(this.latitude, this.longitude);
+    } else {
+      console.log('Please select a location.');
+    }
   }
 }
