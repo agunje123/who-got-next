@@ -21,4 +21,8 @@ export class MatchesTableComponent implements OnInit {
   async ngOnInit() {
     this.tableData = await this.supabaseService.getMatches();
   }
+
+  showForm() {
+    
+  }
 }
