@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   isDarkMode: boolean = true;
+  showTable: boolean = true;
 
   @HostBinding('class')
   get themeMode() {
@@ -22,6 +23,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.checkForDarkmode();
     this.checkForMobileView();
+    this.settingsService.showTableSub.subscribe((res) => {
+      this.showTable = res;
+    });
   }
 
   checkForMobileView() {

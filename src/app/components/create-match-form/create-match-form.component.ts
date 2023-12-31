@@ -61,6 +61,9 @@ export class CreateMatchFormComponent implements OnInit {
       );
       this.supabaseService.createMatch(newMatch);
       this.form.reset();
+      setTimeout(() => {
+        this.settingsService.showTableSub.next(true);
+      }, 500);
     } else {
       console.log('Please fill in the correct values.');
     }

@@ -1,5 +1,5 @@
 <body class="mat-app-background">
   <app-navbar></app-navbar>
-  <app-matches-table></app-matches-table>
-  <app-create-match-form></app-create-match-form>
+  <app-matches-table *ngIf="showTable"></app-matches-table>
+  <app-create-match-form *ngIf="!showTable"></app-create-match-form>
 </body>

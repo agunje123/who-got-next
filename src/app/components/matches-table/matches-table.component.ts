@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsService } from 'src/app/services/settings.service';
 import { SupabaseService } from 'src/app/services/supabase.service';
 import { Match } from 'src/assets/model/match.model';
 
@@ -16,13 +17,16 @@ export class MatchesTableComponent implements OnInit {
     'players',
   ];
 
-  constructor(private supabaseService: SupabaseService) {}
+  constructor(
+    private supabaseService: SupabaseService,
+    private settingsService: SettingsService
+  ) {}
 
   async ngOnInit() {
     this.tableData = await this.supabaseService.getMatches();
   }
 
   showForm() {
-    
+    this.settingsService.showTableSub.next(false);
   }
 }

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class SettingsService {
   darkModeSubject = new Subject<boolean>();
   mobileViewSubject = new Subject<boolean>();
+  showTableSub = new Subject<boolean>();
 
   setDarkMode(isDarkMode: boolean) {
     this.darkModeSubject.next(isDarkMode);
@@ -16,4 +17,5 @@ export class SettingsService {
   getDarkMode() {
     return JSON.parse(localStorage.getItem('isDarkMode') || '{}');
   }
+
 }
