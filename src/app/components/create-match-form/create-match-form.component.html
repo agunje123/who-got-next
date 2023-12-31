@@ -4,14 +4,19 @@
     [ngClass]="{ mobile: isMobile }"
     (ngSubmit)="onSubmit()"
   >
-    <mat-form-field *ngIf="!isMapOpen">
+    <mat-form-field appearance="outline" *ngIf="!isMapOpen">
       <mat-label>Current Players</mat-label>
       <input matInput type="number" formControlName="currentPlayers" />
     </mat-form-field>
 
-    <mat-form-field *ngIf="!isMapOpen">
+    <mat-form-field appearance="outline" *ngIf="!isMapOpen">
       <mat-label>Players Needed</mat-label>
       <input matInput type="number" formControlName="playersNeeded" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="!isMapOpen">
+      <mat-label>Court Name</mat-label>
+      <input matInput placeholder="Ex. Kušlanova" formControlName="courtName" />
     </mat-form-field>
 
     <button
@@ -21,6 +26,10 @@
       *ngIf="!isMapOpen"
     >
       Choose Location
+    </button>
+
+    <button mat-raised-button color="primary" *ngIf="!isMapOpen" type="submit">
+      Create New Match
     </button>
 
     <div *ngIf="isMapOpen">

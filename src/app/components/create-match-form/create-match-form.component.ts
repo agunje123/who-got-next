@@ -26,8 +26,8 @@ export class CreateMatchFormComponent implements OnInit {
       currentPlayers: [null, [Validators.required, Validators.min(0)]],
       playersNeeded: [null, [Validators.required, Validators.min(0)]],
       courtName: [null, [Validators.required]],
-      longitude: [null, [Validators.required]],
-      latitude: [null, [Validators.required]],
+      longitude: [null, Validators.required],
+      latitude: [null, Validators.required],
     });
 
     this.mapService.isMapOpenSub.subscribe((res) => {
@@ -35,8 +35,8 @@ export class CreateMatchFormComponent implements OnInit {
     });
 
     this.mapService.coordinatesSub.subscribe((coordinates) => {
-      this.form.value.latitude = coordinates[0];
-      this.form.value.longitude = coordinates[1];
+      this.form.get('latitude')?.setValue(coordinates[0]);
+      this.form.get('longitude')?.setValue(coordinates[1]);
     });
 
     this.settingsService.mobileViewSubject.subscribe((result) => {
@@ -51,7 +51,6 @@ export class CreateMatchFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const formData = this.form.value;
-      console.log(formData);
     } else {
       console.log('Please enter the correct values.');
     }
