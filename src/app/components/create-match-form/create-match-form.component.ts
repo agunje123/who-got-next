@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MapService } from 'src/app/services/map.service';
 import { SettingsService } from 'src/app/services/settings.service';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { Match } from 'src/assets/model/match.model';
 
 @Component({
   selector: 'app-create-match-form',
@@ -51,6 +52,14 @@ export class CreateMatchFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const formData = this.form.value;
+      const newMatch = new Match(
+        formData.currentPlayers,
+        formData.playersNeeded,
+        formData.courtName,
+        formData.longitude,
+        formData.latitude
+      );
+      this.supabaseService.createMatch(newMatch);
     } else {
       console.log('Please enter the correct values.');
     }
