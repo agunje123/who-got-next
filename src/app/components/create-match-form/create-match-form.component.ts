@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SettingsService } from 'src/app/services/settings.service';
+import { SupabaseService } from 'src/app/services/supabase.service';
 
 @Component({
   selector: 'app-create-match-form',
@@ -13,7 +14,8 @@ export class CreateMatchFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private supabaseService: SupabaseService
   ) {}
 
   ngOnInit(): void {
@@ -27,8 +29,6 @@ export class CreateMatchFormComponent implements OnInit {
       this.isMobile = result;
     });
   }
-
-  
 
   onSubmit() {
     if (this.form.valid) {
